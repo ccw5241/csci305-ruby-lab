@@ -4,21 +4,29 @@
 #
 # CSCI 305 - Ruby Programming Lab
 #
-# <firstname> <lastname>
-# <email-address>
+# <Chenwei> <Cao>
+# <ccw5241@gmail.com>
 #
 ###############################################################
 
 $bigrams = Hash.new # The Bigram data structure
 $name = "<firstname> <lastname>"
-
 # function to process each line of a file and extract the song titles
+song = Regexp.new('%[\w]+<SEP>+[\w]+<SEP>+[\w \s]+<SEP>+[\w\s]+()')
+tid = /%[\w]/
+sid = /[\w]/
+artName = /[\w \s]/
+stitle = /[\w\s]+()/
 def process_file(file_name)
 	puts "Processing File.... "
 
 	begin
 		IO.foreach(file_name, encoding: "utf-8") do |line|
 			# do something for each line
+			if stitle =~ /[\w\s]+()/
+			puts "The song title is:" + stitle
+		else
+			puts "dont have song title"
 		end
 
 		puts "Finished. Bigram model built.\n"
