@@ -10,21 +10,21 @@
 ###############################################################
 
 $bigrams = Hash.new # The Bigram data structure
-$name = "<firstname> <lastname>"
+$name = "<Chenwei> <Cao>"
 # function to process each line of a file and extract the song titles
 song = Regexp.new('%[\w]+<SEP>+[\w]+<SEP>+[\w \s]+<SEP>+[\w\s]+()')
 tid = /%[\w]/
 sid = /[\w]/
 artName = /[\w \s]/
-stitle = /[\w\s]+()/
-def process_file(file_name)
+stitle = /[\w\s]+()?*_-!@#^&/
+def process_file(a_tracks.txt)
 	puts "Processing File.... "
 
 	begin
-		IO.foreach(file_name, encoding: "utf-8") do |line|
+		IO.foreach(a_tracks.txt, encoding: "utf-8") do |line|
 			# do something for each line
-			if stitle =~ /[\w\s]+()/
-			puts "The song title is:" + stitle
+			show_title(line, /[\w\s]+()?*_-!@#^&/)
+			puts "The song title is: " + show_title
 		else
 			puts "dont have song title"
 		end
