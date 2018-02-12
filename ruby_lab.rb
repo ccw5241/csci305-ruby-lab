@@ -24,6 +24,7 @@ def process_file(a_tracks.txt)
 		IO.foreach(a_tracks.txt, encoding: "utf-8") do |line|
 			# do something for each line
 			show_title(line, /[\w\s]+()?*_-!@#^&/)
+			if show_title =~ /[\w\s]+()?*_-!@#^&/
 			puts "The song title is: " + show_title
 		else
 			puts "dont have song title"
